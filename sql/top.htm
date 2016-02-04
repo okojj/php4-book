@@ -1,0 +1,112 @@
+<html>
+
+<head>
+<title>SQL Commander</title>
+<base target="sql_main">
+
+<script language="JavaScript">
+<!--
+function checkForm(form)
+{
+	var msg="";
+	if(form.db.value==""){
+		msg+="- DB를 입력하세요.\n";
+	}
+	if(form.id.value==""){
+		msg+="- ID를 입력하세요.\n";
+	}
+	if(form.pw.value==""){
+		msg+="- 비밀번호를 입력하세요.\n";
+	}
+	if(form.query.value==""){
+		msg+="- Query를 입력하세요.\n";
+	}
+  	if (msg)
+  	{
+  		alert("* 아래 사항을 확인하시기 바랍니다.         \n\n" + msg);
+  		return false;
+  	}
+	return true;
+}
+//-->
+</script>
+
+</head>
+
+
+<body>
+<form method="POST" action="sql_run.php" name="f" onSubmit="return checkForm(this);">
+<input type=hidden name="query" value="">
+<center>
+<font size=4 color=NAVY><b>SQL Commander v0.02</b></font>
+  <table border="0" cellspacing="0">
+    <tr>
+      <td width="100" align="center" rowspan="11" valign=top>
+	<table border=0 cellspacing=0 cellpadding=0>
+	<tr><th bgcolor=#F0F0F0><font size=2>HOST</font></th>
+	<tr><td algin=center><input type="text" name="host" value="localhost" size="12"></td></tr>
+	<tr><th bgcolor=#F0F0F0><font size=2>DB</font></th>
+	<tr><td algin=center><input type="text" name="db" size="12"></td></tr>
+	<tr><th bgcolor=#F0F0F0><font size=2>ID</font></th>
+	<tr><td algin=center><input type="text" name="id" size="12"></td></tr>
+	<tr><th bgcolor=#F0F0F0><font size=2>Password</font></th>
+	<tr><td algin=center><input type="password" name="pw" size="12"></td></tr>
+	</table>
+      </td>
+    </tr>
+    <tr>
+      <td><textarea rows="2" name="query1" cols="75"></textarea></td>
+      <td align="right">
+        <input type="submit" value=" ☜ 실행 " onClick="document.f.query.value=document.f.query1.value;"></td>
+    </tr>
+    <tr>
+      <td><textarea rows="2" name="query2" cols="75"></textarea></td>
+      <td align="right">
+         <input type="submit" value=" ☜ 실행 " onClick="document.f.query.value=document.f.query2.value;"></td>
+    </tr>
+    <tr>
+      <td><textarea rows="2" name="query3" cols="75"></textarea></td>
+      <td align="right">
+         <input type="submit" value=" ☜ 실행 " onClick="document.f.query.value=document.f.query3.value;"></td>
+    </tr>
+    <tr>
+      <td><textarea rows="2" name="query4" cols="75"></textarea></td>
+      <td align="right">
+          <input type="submit" value=" ☜ 실행 " onClick="document.f.query.value=document.f.query4.value;"></td>
+    </tr>
+    <tr>
+      <td><textarea rows="2" name="query5" cols="75"></textarea></td>
+      <td align="right">
+         <input type="submit" value=" ☜ 실행 " onClick="document.f.query.value=document.f.query5.value;"></td>
+    </tr>
+    <tr>
+      <td><textarea rows="2" name="query6" cols="75"></textarea></td>
+      <td align="right">
+         <input type="submit" value=" ☜ 실행 " onClick="document.f.query.value=document.f.query6.value;"></td>
+    </tr>
+    <tr>
+      <td><textarea rows="2" name="query7" cols="75"></textarea></td>
+      <td align="right">
+         <input type="submit" value=" ☜ 실행 " onClick="document.f.query.value=document.f.query7.value;"></td>
+    </tr>
+    <tr>
+      <td><textarea rows="2" name="query8" cols="75"></textarea></td>
+      <td align="right">
+         <input type="submit" value=" ☜ 실행 " onClick="document.f.query.value=document.f.query8.value;"></td>
+    </tr>
+    <tr>
+      <td><textarea rows="2" name="query9" cols="75"></textarea></td>
+      <td align="right">
+         <input type="submit" value=" ☜ 실행 " onClick="document.f.query.value=document.f.query9.value;"></td>
+    </tr>
+    <tr>
+      <td><textarea rows="2" name="query10" cols="75"></textarea></td>
+      <td align="right">
+         <input type="submit" value=" ☜ 실행 " onClick="document.f.query.value=document.f.query10.value;"></td>
+    </tr>
+ </table>
+</center>
+</form>
+</body>
+
+</html>

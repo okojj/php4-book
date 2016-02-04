@@ -1,0 +1,8 @@
+AuthUserFile /home/www/ojj/public_html/namecard/.htpasswd
+AuthGroupFile /dev/null
+AuthName OJJ
+AuthType Basic
+
+<Limit GET POST>
+require	valid-user
+</Limit>

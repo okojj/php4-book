@@ -1,0 +1,198 @@
+<html>
+<head>
+<title>회원가입</title>
+
+<script language="JavaScript">
+<!--
+function FillForm(field1,field2) {
+  field2.value=field1.value;
+  return;
+}
+
+function OpenZipcode(){
+        window.open("zip/zipcode.php?form=f&zip1=zip1&zip2=zip2&address=addr1","ZipWin","width=480,height=200,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes");
+}
+
+function check_duplicate_window(value){
+	
+	rightValue=value.split("=")[1];
+	
+	if(rightValue=="" || rightValue=="-" || rightValue=="--"){
+		alert("내용을 입력하세요.");
+		return false;
+	}
+	window.open("check_duplicate.php?"+value, "check",'toolbar=no,directories=no,scrollbars=0,resizable=1,status=no,menubar=0,width=250,height=100');
+}
+
+function checkForm(form)
+{
+	var msg="";
+
+	if(form.id.value==""){
+		msg+="- 회원 ID를 입력하세요.\n\n";
+	}
+	else if(form.id.value.length < 3){
+		msg+="- 회원 ID를 가 너무 짧습니다. 3자이상 입력하세요.   \n\n";
+	}
+	else if(form.check_id.value==""){
+		msg+="- 회원 ID를 중복검사를 하지않았습니다.\n  (중복확인 버튼을 누르세요)  \n\n";
+	}
+	else if(form.check_id.value==2){
+		msg+="- 이미 사용중인 ID 입니다.   \n\n";
+	}
+	else if(form.check_id.value==-1){
+		msg+="- 회원 ID를 정확하게 입력하세요.   \n\n";
+	}
+	if(form.passwd.value==""){
+		msg+="- 비밀번호를 입력하세요.\n\n";
+	}
+	if(form.passwd2.value==""){
+		msg+="- 비밀번호 확인을 입력하세요.\n\n";
+	}
+	else if(form.passwd.value!=form.passwd2.value){
+		msg+="- 확인비밀번호가 다릅니다. 똑같이 입력하세요.   \n\n";
+	}
+	if(form.idnum1.value=="" || form.idnum2.value==""){
+		msg+="- 주민등록번호를 입력하세요.\n\n";
+  	}
+  	else if ( (form.idnum1.value.length < 6) || (form.idnum2.value.length < 7) || form.check_idnum.value==-1 ){
+		msg+="- 주민등록번호를 정확히 입력하세요.\n\n";
+  	}
+	else if(form.check_idnum.value==""){
+		msg+="- 주민등록번호 중복검사를 하지않았습니다.\n  (중복확인 버튼을 누르세요)  \n\n";
+	}
+	else if(form.check_idnum.value==2){
+		msg+="- 이미 등록된 주민등록번호입니다.  \n\n";
+	}
+	if(form.email.value==""){
+		msg+="- E-mail을 입력하세요.\n\n";
+  	}
+	if(form.tel.value==""){
+		msg+="- 전화번호를 입력하세요.\n\n";
+  	}
+	if(form.zip1.value=="" || form.zip2.value==""){
+		msg+="- 우편번호를 입력하세요.\n\n";
+  	}
+	if(form.addr1.value=="" || form.addr2.value==""){
+		msg+="- 주소를 입력하세요.\n\n";
+  	}
+  	if (msg)
+  	{
+  		alert("* 아래 사항을 확인하시기 바랍니다.            \n\n\n" + msg);
+  		return false;
+  	}
+  	
+  	form.ok.disabled=true;
+	return true;
+}
+//-->
+</script>
+</head>
+
+<body>
+<br><br>
+
+<form method="POST" action="mem_register.php" name="f" onSubmit="return checkForm(document.f);">
+  <input type="hidden" name="m" value="register">
+  <input type="hidden" name="check_id" value="">
+  <input type="hidden" name="check_idnum" value="">
+  <div align="center"><center>
+<table border=0 cellpadding=1 cellspacing=1 width="550" height="30" bgcolor="#003399">
+	<tr><Td bgcolor="#E1EEF5" align="center"><font color="black" face="굴림"><b>회원 등록</b></font></td></tr>
+</table>&nbsp;<br>
+<table width="550" cellpadding="0" cellspacing="2">
+    <tr>
+      <td colspan="2"><ul>
+        <li><font size="2">아래의 모든 항목을 입력하신 후에
+        &quot;<strong><font size="2" color="#FF0000">등록</font></strong>&quot;버튼을 누르세요.</font></li>
+        <li><font size="2"><b>ID</b> 와 <b>주민등록번호</b>는 변경이 불가능 하오니 정확히 입력해 주시기 바랍니다.</font></li>
+        <li><font size="2"><strong><font color="#FF0000">* </font></strong>는
+          필수 입력 사항입니다.</font></li>
+        <li><font size="2">등록에 관해 문제가 발생하거나 문의사항이 있으면, <a href="mailto:help@ojj.co.kr">관리자</a>
+            에게로 연락주세요.</font></li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="2"><hr size="1" noshade color="#004080">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#E1EEF5" bordercolor="#3366CC"><font size="2"><strong>&nbsp; 사용자 ID
+        <font color="#FF0000">*</font></strong></font></td>
+      <td bgcolor="#FCFCFC"><font size="3"><input type="text" name="id" size="8" maxlength="8" onChange="document.f.check_id.value='';"></font>
+      <input type="button" value="ID 중복확인" OnClick="check_duplicate_window('id='+document.f.id.value)">
+      <font size="2">(<font color="#000099">영문과 숫자 조합 3~8자리</font>)</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#E1EEF5" width="25%" bordercolor="#3366CC"><font size="2"><strong>&nbsp; 비밀번호 <font color="#FF0000">*</font></strong></font></td>
+      <td bgcolor="#FCFCFC"><table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="25%"><font size="3"><input type="password" name="passwd" size="8"
+          maxlength="8"></font></td>
+          <td width="25%" bgcolor="#E1EEF5"><font size="2"><strong>&nbsp; 비밀번호 확인</strong></font></td>
+          <td width="25%">&nbsp;<font size="3"><input type="password" name="passwd2" size="8"
+          maxlength="8"></font></td>
+        </tr>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#E1EEF5" bordercolor="#3366CC"><strong><font size="2">&nbsp; 성&nbsp; 명<font color="#FF0000">*</font></strong></font></td>
+      <td bgcolor="#FCFCFC"><font size="3"><input type="text" name="name" size="15" maxlength="10"></font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#E1EEF5" bordercolor="#3366CC"><font size="2"><strong>&nbsp; 주민등록번호<font color="#FF0000">*</font></strong></font></td>
+      <td bgcolor="#FCFCFC"><font size="3"><input type="text" name="idnum1" size="6" maxlength="6" onChange="document.f.check_idnum.value='';">
+      - <input type="text" name="idnum2" size="7" maxlength="7" onChange="document.f.check_idnum.value='';"></font>
+      <input type="button" value="중복확인" OnClick="check_duplicate_window('idnum='+document.f.idnum1.value+document.f.idnum2.value)"><br>
+      <font style="font-size:9pt;" color="#003399">* 중복 등록 방지를 위해 입력해주세요</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#E1EEF5" bordercolor="#3366CC"><font size="2"><strong>&nbsp; E-mail</strong></font><font size="2"><strong>
+        <font color="#FF0000">*</font></strong></font></td>
+      <td bgcolor="#FCFCFC"><font size="3"><input type="text" name="email" size="35" maxlength="50"></font>
+        <font style="font-size:9pt;"><a href="http://www.empal.com" target="_new">무료 이메일</a></font>
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor="#E1EEF5" bordercolor="#3366CC"><font size="2"><strong>&nbsp; 홈페이지</strong></font></td>
+      <td bgcolor="#FCFCFC"><font size="3"><input type="text" name="url" size="35" value="http://" maxlength="100"></font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#E1EEF5" bordercolor="#3366CC"><font size="2"><strong>&nbsp; 전&nbsp; 화<font color="#FF0000">*</font></strong></font></td>
+      <td bgcolor="#FCFCFC"><font size="3"><input type="text" name="tel" size="15" maxlength="20"></font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#E1EEF5" bordercolor="#3366CC"><font size="2"><strong>&nbsp; 이동통신</strong></font></td>
+      <td bgcolor="#FCFCFC"><font size="3"><input type="text" name="hp" size="15" maxlength="20"></font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#E1EEF5" rowspan="2" bordercolor="#3366CC"><font size="2"><strong>&nbsp; 주소 <font color="#FF0000">*</font></strong></font></td>
+      <td bgcolor="#FCFCFC"><font color=#003399 style="font-size:9pt;">* <b>우편번호 찾기</b> 버튼을 눌러서 입력하세요</font><br>
+      <font size="3"><input type="text" name="zip1" size="3" maxlength="10" onFocus="document.f.zip_button1.focus();">
+      - <input type="text" name="zip2" size="3" maxlength="10" onFocus="document.f.zip_button1.focus();">
+      <input type="button" name="zip_button1" value=" 우편번호찾기 " onclick="OpenZipcode()"></font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FCFCFC"><font size="3">
+      <input type="text" name="addr1" size="40" maxlength="70" onFocus="document.f.addr2.focus();"><br>
+      <input type="text" name="addr2" size="40" maxlength="70"></font> <font size=2 color=#003399 style="font-size:9pt;">* 나머지 주소</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><hr size="1" noshade color="#004080">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center" height="46">
+      <input name="ok" type="submit" value="          등록          "> <input type="reset" value="  다시 "></td>
+    </tr>
+  </table>
+  </center></div>
+</form>
+
+</body>
+</html>
